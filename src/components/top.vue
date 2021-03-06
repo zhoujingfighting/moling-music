@@ -44,7 +44,7 @@ export default {
         width:100%;
         height:100px;
         .left-box{
-            // position: fixed;
+            position: fixed;
             .img-wrapper{
                 margin-left:40px;
                 margin-top:10px
@@ -56,7 +56,7 @@ export default {
             }
         }
         .right-box{
-            position: absolute;
+            position: fixed;
             right:50px;
             top:50px;
         }

@@ -55,6 +55,7 @@
               <div class="num">{{item.playCount}}</div>
             </div>
           </div>
+          <!-- v-for渲染页面 -->
           <div class="info-wrap">
             <div class="name">{{item.copywriter}}</div>
             <div class="singer">{{item.artistName}}</div>
@@ -230,9 +231,9 @@ export default {
         display: flex;
         align-items: center;
         padding-left: 15px;
-        &:hover {
-          background-color: #f5f5f5;
-        }
+        // &:hover {
+        //   background-color: #f5f5f5;
+        // }
         .index {
           margin-right: 15px;
           font-size: 15px;
@@ -276,8 +277,6 @@ export default {
           height: 100%;
           padding: 10px;
           font-size: 16px;
-          .song-name {
-          }
           .singer {
             font-size: 14px;
             color: gray;
@@ -287,6 +286,7 @@ export default {
     }
   }
   .mvs {
+    margin-bottom:100px;
     .items {
       display: flex;
       justify-content: space-around;
