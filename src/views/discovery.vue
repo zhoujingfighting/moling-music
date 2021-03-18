@@ -18,7 +18,7 @@
               <span class="desc">{{ item.copywriter }}</span>
             </div>
             <img :src="item.picUrl" alt="" />
-            <span class="iconfont icon-play"></span>
+            <span class="iconfont icon-play">&#xe634;</span>
           </div>
           <p class="name">{{ item.name }}</p>
         </div>
@@ -33,7 +33,7 @@
         <div class="item" v-for="(item, index) in newsong" :key="index">
           <div class="img-wrap">
             <img :src="item.picUrl" alt="" />
-            <span @click="playMusic(item.id)" class="iconfont icon-play"></span>
+            <span @click="playMusic(item.id)" class="iconfont icon-play">&#xe688;</span>
           </div>
           <div class="song-wrap">
             <div class="song-name">{{ item.name }}</div>
@@ -49,7 +49,7 @@
         <div class="item" v-for="item in mv" :key="item.id">
           <div class="img-wrap" @click="toMv(item.id)">
             <img :src="item.picUrl" alt="" />
-            <span class="iconfont icon-play"></span>
+            <span class="iconfont icon-play">&#xe634;</span>
             <div class="num-wrap">
               <div class="iconfont icon-play"></div>
               <div class="num">{{item.playCount}}</div>
@@ -92,7 +92,6 @@ export default {
      }).then(res => {
          console.log(res)
      })
-     console.log(1)
     banner().then(res => {
       this.banners = res.banners;
     });
@@ -119,9 +118,9 @@ export default {
       songUrl({
         id:id
       }).then(res=>{
-        // window.console.log(res)
-        // this.songUrl = res.data[0].url
         this.$parent.url = res.data[0].url
+        //播放按钮组件的链接地址
+        console.log( this.$parent )
       })
     }
   }
@@ -191,12 +190,12 @@ export default {
             width: 40px;
             height: 40px;
             color: #dd6d60;
-            font-size: 20px;
+            font-size: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.8);
+            // background: rgba(255, 255, 255, 0.8);
             opacity: 0;
             &::before {
               transform: translateX(3px);

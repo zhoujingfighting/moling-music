@@ -8,9 +8,7 @@ export function playlistDetail({id}){
             id
         }
     })
-}
-
-
+} 
 export function hotComments({id}){
     return request({
         url:"/comment/hot",
@@ -20,8 +18,7 @@ export function hotComments({id}){
             id
         }
     })
-}
-
+} 
 export function listComments({id,offset}){
     return request({
         url:"/comment/playlist",
@@ -33,6 +30,6 @@ export function listComments({id,offset}){
         }
     })
 }
-
+ 
 
 

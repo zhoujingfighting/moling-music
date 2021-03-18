@@ -88,8 +88,6 @@
           <!-- 分页器 -->
           </div>  
       </div>
-      
-
     </div>
     <div class="mv-recommend">
       <h3 class="title">相关推荐</h3>
@@ -98,10 +96,10 @@
           <div class="item" @click="toMV(item.id)">
             <div class="img-wrap">
               <img :src="item.cover" alt="" />
-              <span class="iconfont icon-play"></span>
+              <span class="iconfont icon-play">&#xe634;</span>
               <div class="num-wrap">
                 <div class="iconfont icon-play"></div>
-                <div class="num">{{ item.playCount | formatCount }}</div>
+                <div class="num">播放量:{{ item.playCount | formatCount }}</div>
               </div>
               <span class="time">{{ item.duration | formatDuration }}</span>
             </div>
@@ -347,12 +345,12 @@ export default {
               width: 40px;
               height: 40px;
               color: #dd6d60;
-              font-size: 20px;
+              font-size: 40px;
               border-radius: 50%;
               display: flex;
               align-items: center;
               justify-content: center;
-              background: rgba(255, 255, 255, 0.8);
+              // background: rgba(255, 255, 255, 0.8);
               opacity: 0;
               &::before {
                 transform: translateX(3px);

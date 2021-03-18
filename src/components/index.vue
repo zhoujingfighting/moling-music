@@ -15,7 +15,7 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/songs">
+          <router-link to="/newsongs">
             <span class="iconfont icon-music">&#xf116;</span>
             最新音乐
           </router-link>
@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="player">
-      <audio controls autoplay :src="url" loop></audio>
+      <audio controls autoplay :src="url" loop="true"></audio>
     </div>
   </div>
 </template>
@@ -116,11 +116,12 @@ export default {
   }
   .player {
     background: #f1f3f4;
-    height: 60px;
+    height: 40px;
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 20%;
+    // transform: translateX(-60%);
   }
   audio {
     width: 100%;

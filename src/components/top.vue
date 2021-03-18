@@ -5,10 +5,6 @@
         <img src="@/styles/images/moling.png" alt="">
         <h3 class="title">墨灵音乐</h3>
       </div>
-      <div class="history-wrapper">
-        <span @click="$router.go(-1)" class="iconfont icon-arrow-lift"></span>
-        <span @click="$router.go(1)" class="iconfont icon-arrow-right"></span>
-      </div>
     </div>
     <div class="right-box">
       <el-input size="small" @keyup.enter.native="toResult" placeholder="搜索" v-model.trim="query">
