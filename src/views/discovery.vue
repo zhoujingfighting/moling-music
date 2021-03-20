@@ -33,7 +33,7 @@
         <div class="item" v-for="(item, index) in newsong" :key="index">
           <div class="img-wrap">
             <img :src="item.picUrl" alt="" />
-            <span @click="playMusic(item.id)" class="iconfont icon-play">&#xe688;</span>
+            <span @click="playMusic(item.id)" class="iconfont icon-play">&#xe634;</span>
           </div>
           <div class="song-wrap">
             <div class="song-name">{{ item.name }}</div>
@@ -51,7 +51,7 @@
             <img :src="item.picUrl" alt="" />
             <span class="iconfont icon-play">&#xe634;</span>
             <div class="num-wrap">
-              <div class="iconfont icon-play"></div>
+              <div class="iconfont icon-play">&#xe634;</div>
               <div class="num">{{item.playCount}}</div>
             </div>
           </div>
@@ -67,7 +67,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { banner, songlist, newsong,mv,songUrl } from '@/api/discovery.js';
 export default {
   name: 'discovery',
@@ -86,12 +85,12 @@ export default {
     };
   },
   created() {
-     axios({
-         url : "https://autumnfish.cn/banner" , 
-         method : "get"
-     }).then(res => {
-         console.log(res)
-     })
+    //  axios({
+    //      url : "https://autumnfish.cn/banner" , 
+    //      method : "get"
+    //  }).then(res => {
+    //      console.log(res)
+    //  })
     banner().then(res => {
       this.banners = res.banners;
     });
@@ -119,6 +118,7 @@ export default {
         id:id
       }).then(res=>{
         this.$parent.url = res.data[0].url
+        this.$parent.musicid = res.data[0].id
         //播放按钮组件的链接地址
         console.log( this.$parent )
       })
@@ -258,8 +258,7 @@ export default {
             text-align: center;
             line-height: 30px;
             border-radius: 50%;
-            font-size: 14px;
-            background: rgba(255, 255, 255, 0.8);
+            font-size: 30px;
             opacity: 0;
             &::before {
               transform: translateX(3px);
@@ -303,12 +302,11 @@ export default {
             width: 40px;
             height: 40px;
             color: #dd6d60;
-            font-size: 20px;
+            font-size: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.8);
             opacity: 0;
             &::before {
               transform: translateX(3px);

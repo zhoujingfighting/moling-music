@@ -131,7 +131,7 @@ export default {
     '$route.query.keywords': 'searchResult'
   },
   created() {
-    this.searchResult();
+    this.searchResult();    
   },
   methods: {
     toPlaylist(id) {
@@ -144,7 +144,9 @@ export default {
       }).then(res => {
         // window.console.log(res)
         // this.songUrl = res.data[0].url
+        //父元素audio获取url属性
         this.$parent.url = res.data[0].url;
+        this.$parent.musicid = res.data[0].id
       });
     },
     // 去mv页面
@@ -173,6 +175,7 @@ export default {
             this.total = res.result.songCount;
             break;
           case '1000':
+            console.log(res.result)
             this.playList = res.result.playlists;
             this.total = res.result.playlistCount;
             break;
