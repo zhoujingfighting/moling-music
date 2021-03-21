@@ -89,6 +89,7 @@ export default {
         // window.console.log(res)
         // this.songUrl = res.data[0].url
         this.$parent.url = res.data[0].url;
+        this.$parent.musicid = res.data[0].id;
       });
     }
   },

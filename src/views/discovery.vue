@@ -120,7 +120,6 @@ export default {
         this.$parent.url = res.data[0].url
         this.$parent.musicid = res.data[0].id
         //播放按钮组件的链接地址
-        console.log( this.$parent )
       })
     }
   }

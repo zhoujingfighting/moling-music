@@ -12,6 +12,9 @@ export default {
   components :{
     top , 
     index
+  },
+  watch:{
+
   }
 }
 </script>

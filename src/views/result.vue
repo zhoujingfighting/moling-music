@@ -172,6 +172,7 @@ export default {
         switch (this.type) {
           case '1':
             this.songList = res.result.songs;
+            this.change()
             this.total = res.result.songCount;
             break;
           case '1000':
@@ -186,6 +187,16 @@ export default {
             break;
         }
       });
+    },
+    change(){
+            this.$store.state.nextSonglist  = []
+            const arr = this.songList 
+            for(let i = 0 ; i < arr.length ; i ++){
+                this.$store.state.nextSonglist[i] = {}
+                songUrl({id:arr[i].id}).then(res => this.$store.state.nextSonglist[i][arr[i].id] =  res.data[0].url )
+           }
+            console.log( this.$store.state)
+             console.log( this.songList)
     }
   }
 };

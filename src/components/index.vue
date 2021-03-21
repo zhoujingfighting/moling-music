@@ -54,6 +54,13 @@
       </div>
     </div>
     <div class="player">
+      <i class="el-icon-arrow-left left"
+      @click = "handlePre"
+      ></i>
+      <i class="el-icon-arrow-right right"
+      @click = 'handleNext'
+      ></i>
+      <!-- 这个列表切换应该由全局公共状态确定,因为不同页面获得的歌曲列表不太一样 -->
       <audio 
        controls
        autoplay
@@ -84,7 +91,7 @@ export default {
       lyrarr : [] ,
       liarr:[],          
       index : -1 , 
-      ul:null
+      ul:null ,
     };
   } , 
   methods :{
@@ -129,10 +136,47 @@ export default {
       //歌词更新完,立马进入歌曲部分
       this.liarr = document.getElementsByClassName('lyric')
       this.ul = document.querySelector('.liwrapper')
-    }
+    } , 
+    handlePre(){
+      //要向总线传递目前播放歌曲的index
+      let temp = null
+      for(let i = 0 ; i < this.totalSonglist.length ; i ++){
+        for(let key in this.totalSonglist[i]){
+            if( this.totalSonglist[i][key] === this.url ){
+              temp = i
+            }
+        }
+      }
+      for(let key in this.totalSonglist[temp - 1]){
+        this.musicid = key
+        this.url = this.totalSonglist[temp-1][key]
+      }
+      
+    } ,
+    handleNext(){
+      //要向总线传递目前播放歌曲的index
+        let temp = null
+      for(let i = 0 ; i < this.totalSonglist.length ; i ++){
+        for(let key in this.totalSonglist[i]){
+            if( this.totalSonglist[i][key] === this.url ){
+              temp = i
+            }
+        }
+      }
+      for(let key in this.totalSonglist[temp+ 1]){
+        this.musicid = key
+        this.url = this.totalSonglist[temp + 1][key]
+      }
+    } ,
   } ,
   watch:{
     url(){
+      if(!this.urlArr.includes(this.url)){
+          const map = {} 
+          map[ this.musicid ]  =  this.url
+          this.$store.state.preSonglists.push( map )
+      }
+      //每一次切换歌曲的时候上一首的列表中应该push进去这个url
       getLyric({
         id : this.musicid
       }).then(res => {
@@ -162,9 +206,22 @@ export default {
           item.style = ""
         })
       }
-    }
+    } 
+  },
+  computed:{
+    urlArr(){
+        let result =[]
+        this.totalSonglist.forEach(item => {
+          for(let key in item){
+            result.push(item[key])
+          }
+        })
+        return result
+    },
+    totalSonglist(){
+      return this.$store.state.preSonglists.concat( this.$store.state.nextSonglist )
+    } 
   }
-
 };
 </script>
 <style lang="scss">
@@ -227,7 +284,9 @@ export default {
       .imgwrapper{
         width:100%;
         height:320px;
+       
         img{
+          
           width:100%;
           height:100%;
           display: block;
@@ -255,13 +314,39 @@ export default {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 20%;
-    // transform: translateX(-60%);
+    width: 40%;
+    margin-left:1130px;
+    .left{
+      position: absolute;
+      font-size: 20px;
+      bottom:0;
+      left:30px;
+    }
+    .right{
+      position: absolute;
+      font-size: 20px;
+      bottom:0;
+      left:50px;
+    }
   }
   audio {
-    width: 100%;
+    position:absolute;
+    right:0;
+    width: 90%;
     border-radius: none;
     outline: none;
+    color:red;
   }
 }
 </style>
+<style scoped>
+  @keyframes rotate
+     { 
+       from{transform: rotate(0deg);}
+       to {transform: rotate(360deg);}
+     }
+  .imgwrapper{
+     animation: rotate  30s infinite linear;
+  }
+</style>
+     
