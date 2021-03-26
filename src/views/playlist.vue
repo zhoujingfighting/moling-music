@@ -44,7 +44,7 @@
               <td>
                 <div class="img-wrap" @click="playMusic(item.id)">
                   <img :src="item.al.picUrl" alt="" />
-                  <span class="iconfont icon-play"></span>
+                  <span class="iconfont icon-play">&#xe603;</span>
                 </div>
               </td>
               <td>
@@ -328,6 +328,31 @@ export default {
       }
     }
   }
+  .playlit-table{
+      .img-wrap{
+        position: relative;
+        width:70px;
+        height:70px;
+        img{
+          width:100%;
+          height:100%;
+          border-radius:10px;
+        }
+        .icon-play{
+          position:absolute;
+          left:50%;
+          top:50%;
+          transform: translateX(-50%) translateY(-50%);
+          font-size:25px;
+          color:lightgray;
+          opacity: 0.5;
+          &:hover{
+            color:red;
+            opacity: 1;
+          }
+        }
+      }
+    }
   .comment-wrap {
     margin-bottom: 70px;
     .title {

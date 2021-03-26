@@ -12,7 +12,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: './discovery'
+    redirect: './discovery' 
   },
   {
     path: '/discovery',
@@ -20,11 +20,17 @@ const routes = [
   },
   {
     path: '/mv',
-    component :mv
+    component :mv ,
+    meta:{
+      keepALive : true
+    }
   },
   {
     path: '/mvs',
-    component :mvs
+    component :mvs,
+    meta:{
+      keepALive : true
+    }
   },
   {
     path: '/playlists',
@@ -32,15 +38,24 @@ const routes = [
   },
   {
     path: '/newsongs',
-    component : songs
+    component : songs,
+    meta:{
+      keepALive : true
+    }
   } ,
   {
     path: '/result',
-    component : result
+    component : result,
+    meta:{
+      keepALive : true
+    }
   },
   {
     path: '/playlist',
-    component : playlist
+    component : playlist,
+    meta:{
+      keepALive : true
+    }
   }
 ]
 

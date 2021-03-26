@@ -113,7 +113,7 @@
                 <span class="num">{{ item.playCount | formatCount }}</span>
               </div>
               <img :src="item.coverImgUrl" alt="" />
-              <span class="iconfont icon-play"></span>
+              <span class="iconfont icon-play">&#xe603;</span>
             </div>
             <p class="name">{{ item.description }}</p>
           </div>

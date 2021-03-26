@@ -31,7 +31,10 @@
     
     <!-- 全部vue跳转区都在这 -->
     <div class="main">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view>
+        </router-view>
+      </keep-alive>
     </div>
     <div class="lyric-show" >
       <div class="lyric-wrapper" v-if="url.length !==0">
@@ -54,12 +57,12 @@
       </div>
     </div>
     <div class="player">
-      <i class="el-icon-arrow-left left"
+      <i class="iconfont left"
       @click = "handlePre"
-      ></i>
-      <i class="el-icon-arrow-right right"
+      > &#xe636;</i>
+      <i class="iconfont right"
       @click = 'handleNext'
-      ></i>
+      >&#xe638;</i>
       <!-- 这个列表切换应该由全局公共状态确定,因为不同页面获得的歌曲列表不太一样 -->
       <audio 
        controls
@@ -206,7 +209,10 @@ export default {
           item.style = ""
         })
       }
-    } 
+    } ,
+    songEnd(){
+      
+    }
   },
   computed:{
     urlArr(){
@@ -220,7 +226,10 @@ export default {
     },
     totalSonglist(){
       return this.$store.state.preSonglists.concat( this.$store.state.nextSonglist )
-    } 
+    } ,
+    songEnd(){
+      return this.$refs.audio.ended
+    }
   }
 };
 </script>
@@ -312,21 +321,30 @@ export default {
     background: #f1f3f4;
     height: 40px;
     position: fixed;
+    z-index: 4;
     bottom: 0;
     left: 0;
     width: 40%;
     margin-left:1130px;
     .left{
+      top:16px;
       position: absolute;
       font-size: 20px;
       bottom:0;
-      left:30px;
+      left:25px;
+       &:hover{
+        color:red;
+      }
     }
     .right{
+       top:16px;
       position: absolute;
       font-size: 20px;
       bottom:0;
-      left:50px;
+      left:56px;
+      &:hover{
+        color:red;
+      }
     }
   }
   audio {
