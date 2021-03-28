@@ -4,7 +4,7 @@
 
     <el-carousel :interval="4000" type="card" height="200px">
       <el-carousel-item v-for="(item, index) in banners" :key="index">
-        <img :src="item.imageUrl" alt="" />
+        <img v-lazy="item.imageUrl" alt="" />
       </el-carousel-item>
     </el-carousel>
     <!-- 推荐歌单 -->
@@ -18,7 +18,7 @@
             <div class="desc-wrap">
               <span class="desc">{{ item.copywriter }}</span>
             </div>
-            <img :src="item.picUrl" alt="" />
+            <img v-lazy="item.picUrl" alt="" />
             <span class="iconfont icon-play">&#xe634;</span>
           </div>
           <p class="name">{{ item.name }}</p>
@@ -33,7 +33,7 @@
       <div class="items">
         <div class="item" v-for="(item, index) in newsong" :key="index">
           <div class="img-wrap">
-            <img :src="item.picUrl" alt="" />
+            <img v-lazy="item.picUrl" alt="" />
             <span @click="playMusic(item.id)" class="iconfont icon-play">&#xe634;</span>
           </div>
           <div class="song-wrap">
@@ -49,7 +49,7 @@
       <div class="items">
         <div class="item" v-for="item in mv" :key="item.id">
           <div class="img-wrap" @click="toMv(item.id)">
-            <img :src="item.picUrl" alt="" />
+            <img v-lazy="item.picUrl" alt="" />
             <span class="iconfont icon-play">&#xe634;</span>
             <div class="num-wrap">
               <div class="iconfont icon-play">&#xe634;</div>

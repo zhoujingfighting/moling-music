@@ -2,12 +2,12 @@
   <div class="playlist-container">
     <div class="top-wrap">
       <div class="img-wrap">
-        <img :src="coverImgUrl" alt="" />
+        <img v-lazy="coverImgUrl" alt="" />
       </div>
       <div class="info-wrap">
         <p class="title">{{ title }}</p>
         <div class="author-wrap">
-          <img class="avatar" :src="avatarUrl" alt="" />
+          <img class="avatar" v-lazy="avatarUrl" alt="" />
           <span class="name">{{ nickname }}</span>
           <span class="time">{{ createTime }} 创建</span>
         </div>
@@ -43,7 +43,7 @@
               <td>{{ index + 1 }}</td>
               <td>
                 <div class="img-wrap" @click="playMusic(item.id)">
-                  <img :src="item.al.picUrl" alt="" />
+                  <img v-lazy="item.al.picUrl" alt="" />
                   <span class="iconfont icon-play">&#xe603;</span>
                 </div>
               </td>
@@ -79,7 +79,7 @@
           >
             <div class="item">
               <div class="icon-wrap">
-                <img :src="item.user.avatarUrl" alt="" />
+                <img v-lazy="item.user.avatarUrl" alt="" />
               </div>
               <div class="content-wrap">
                 <div class="content">
@@ -105,7 +105,7 @@
           <div v-if="comments.length != 0" class="comments-wrap">
             <div class="item" v-for="item in comments" :key="item.commentId">
               <div class="icon-wrap">
-                <img :src="item.user.avatarUrl" alt="" />
+                <img v-lazy="item.user.avatarUrl" alt="" />
               </div>
               <div class="content-wrap">
                 <div class="content">
@@ -236,7 +236,7 @@ export default {
           this.$store.state.nextSonglist[i] = {}
           songUrl({id:arr[i].id}).then(res => this.$store.state.nextSonglist[i][arr[i].id] =  res.data[0].url )
         }
-          console.log( this.$store.state.nextSonglist , this.$store.state )
+          // console.log( this.$store.state.nextSonglist , this.$store.state )
     }
   }
 };

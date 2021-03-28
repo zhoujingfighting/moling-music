@@ -31,10 +31,8 @@
     
     <!-- 全部vue跳转区都在这 -->
     <div class="main">
-      <keep-alive>
         <router-view>
         </router-view>
-      </keep-alive>
     </div>
     <div class="lyric-show" >
       <div class="lyric-wrapper" v-if="url.length !==0">

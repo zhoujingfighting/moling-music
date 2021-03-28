@@ -77,8 +77,8 @@
             </div>
           </div>
           <el-pagination
-            @current-change="handleCurrentChange"
-            background="blue"
+            @current-change = "handleCurrentChange"
+            background
             layout="prev, pager, next"
             :total="total"
             :current-page="page"

@@ -12,50 +12,47 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: './discovery' 
+    redirect: './discovery' ,
   },
   {
     path: '/discovery',
-    component:discovery
+    component:discovery ,
+    meta:{
+        keepAlive:true
+    }
   },
   {
     path: '/mv',
-    component :mv ,
-    meta:{
-      keepALive : true
-    }
+    component :mv,
   },
   {
     path: '/mvs',
-    component :mvs,
-    meta:{
-      keepALive : true
-    }
+    component :mvs
   },
   {
     path: '/playlists',
-    component : playlists
+    component : playlists,
+    meta:{
+      keepAlive:true
+  }
   },
   {
     path: '/newsongs',
     component : songs,
     meta:{
-      keepALive : true
+      keepAlive:true
     }
   } ,
   {
     path: '/result',
     component : result,
     meta:{
-      keepALive : true
+      keepAlive:true
     }
   },
   {
     path: '/playlist',
     component : playlist,
-    meta:{
-      keepALive : true
-    }
   }
 ]
 
